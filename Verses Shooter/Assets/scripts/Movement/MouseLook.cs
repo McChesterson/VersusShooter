@@ -22,13 +22,13 @@ namespace Q3Movement
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
 
-        public void Init(Transform character, Transform camera)
+        public void Init(Transform character, Transform camera, Transform HUD)
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
         }
 
-        public void LookRotation(Transform character, Transform camera)
+        public void LookRotation(Transform character, Transform camera, Transform HUD)
         {
             float yRot = Input.GetAxis("Mouse X") * m_XSensitivity;
             float xRot = Input.GetAxis("Mouse Y") * m_YSensitivity;
@@ -52,6 +52,7 @@ namespace Q3Movement
             {
                 character.localRotation = m_CharacterTargetRot;
                 camera.localRotation = m_CameraTargetRot;
+                HUD.localRotation = m_CameraTargetRot;
             }
 
             UpdateCursorLock();

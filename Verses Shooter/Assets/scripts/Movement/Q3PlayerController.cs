@@ -25,12 +25,14 @@ namespace Q3Movement
 
         [Header("Aiming")]
         [SerializeField] private Camera m_Camera;
+        [SerializeField] private Transform m_HUD;
         [SerializeField] private MouseLook m_MouseLook = new MouseLook();
 
         [Header("Movement")]
         [SerializeField] private float m_Friction = 6;
         [SerializeField] private float m_Gravity = 20;
         [SerializeField] private float m_JumpForce = 8;
+        [SerializeField] private float m_CrouchSpeed = 0.5f;
         [Tooltip("Automatically jump when holding jump button")]
         [SerializeField] private bool m_AutoBunnyHop = false;
         [Tooltip("How precise air control is")]
@@ -51,6 +53,8 @@ namespace Q3Movement
         // Used to queue the next jump just before hitting the ground.
         private bool m_JumpQueued = false;
 
+        private bool m_Crouching = false;
+
         // Used to display real time friction values.
         private float m_PlayerFriction = 0;
 
@@ -67,7 +71,7 @@ namespace Q3Movement
                 m_Camera = Camera.main;
 
             m_CamTran = m_Camera.transform;
-            m_MouseLook.Init(m_Tran, m_CamTran);
+            m_MouseLook.Init(m_Tran, m_CamTran, m_HUD);
         }
 
         private void Update()
@@ -75,6 +79,7 @@ namespace Q3Movement
             m_MoveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             m_MouseLook.UpdateCursorLock();
             QueueJump();
+            Crouch();
 
             // Set movement state.
             if (m_Character.isGrounded)
@@ -87,7 +92,7 @@ namespace Q3Movement
             }
 
             // Rotate the character and camera.
-            m_MouseLook.LookRotation(m_Tran, m_CamTran);
+            m_MouseLook.LookRotation(m_Tran, m_CamTran,m_HUD);
 
             // Move the character.
             m_Character.Move(m_PlayerVelocity * Time.deltaTime);
@@ -205,7 +210,7 @@ namespace Q3Movement
             }
             else
             {
-                ApplyFriction(0);
+                ApplyFriction(/*0*/1.0f);
             }
 
             var wishdir = new Vector3(m_MoveInput.x, 0, m_MoveInput.z);
@@ -278,6 +283,37 @@ namespace Q3Movement
 
             m_PlayerVelocity.x += accelspeed * targetDir.x;
             m_PlayerVelocity.z += accelspeed * targetDir.z;
+        }
+    
+        //Manage Crouching
+        private void Crouch()
+        {
+            if (Input.GetButton("Crouch"))
+            {
+                transform.localScale = new Vector3(transform.localScale.x, 0.6f, transform.localScale.z);
+                transform.Translate(new Vector3(0, 0.2f /*  1/2 of scale change  */, 0));
+
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).localScale = new Vector3(transform.GetChild(i).localScale.x, 1.6f, transform.GetChild(i).localScale.z);
+                }
+
+                m_Crouching = true;
+            } else { m_Crouching = false; }
+
+            if (!m_Crouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z);
+                transform.Translate(new Vector3(0, -0.2f /*  -1/2 of scale change  */, 0));
+
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).localScale = new Vector3(transform.GetChild(i).localScale.x, 1f, transform.GetChild(i).localScale.z);
+                }
+
+
+                m_Crouching = false;
+            }
         }
     }
 }
