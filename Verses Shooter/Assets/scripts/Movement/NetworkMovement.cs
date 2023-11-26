@@ -5,6 +5,7 @@ using Unity.Netcode;
 
 public class NetworkMovement : NetworkBehaviour
 {
+    int Counting = 0;
 
     private void Update()
     {
@@ -27,6 +28,7 @@ public class NetworkMovement : NetworkBehaviour
     [ServerRpc]
     private void MovementServerRpc()
     {
-        Debug.Log("ServerRpc " + OwnerClientId);
+        Counting++;
+        Debug.Log("ServerRpc Test; " + OwnerClientId + "; " + Counting);
     }
 }
