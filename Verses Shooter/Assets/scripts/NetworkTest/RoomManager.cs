@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -22,14 +23,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("Connected to Server");
 
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = false;
+        roomOptions.MaxPlayers = 4;
+        PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("room", "lobby"), roomOptions, TypedLobby.Default);
+
         PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-
-        PhotonNetwork.JoinOrCreateRoom("test", null, null);
 
         Debug.Log("We're in the lobby");
     }
