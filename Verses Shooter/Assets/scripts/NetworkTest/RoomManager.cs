@@ -23,17 +23,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("Connected to Server");
 
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.IsVisible = false;
-        roomOptions.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("room", "lobby"), roomOptions, TypedLobby.Default);
-
         PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
+
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = false;
+        roomOptions.MaxPlayers = 4;
+        PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("room", "lobby"), null, null);
 
         Debug.Log("We're in the lobby");
     }
