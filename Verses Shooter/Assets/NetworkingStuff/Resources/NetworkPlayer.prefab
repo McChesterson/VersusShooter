@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2376482286583329505}
   - component: {fileID: 938506289763193312}
   - component: {fileID: 9155505382257065875}
+  - component: {fileID: 2476026809682804103}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -134,7 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 4
+  sprintSpeed: 8
   maxVelocityChange: 10
+  airControl: 0.5
+  jumpHeight: 5
 --- !u!114 &2636970734185606992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +209,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 5220112393766223196}
   camera: {fileID: 5220112395317741109}
+--- !u!135 &2476026809682804103
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220112393766223197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.65
+  m_Center: {x: 0, y: -0.53, z: 0}
 --- !u!1 &5220112395317741109
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 1
+  sensitivityValue: 1
   smoothing: {x: 3, y: 3}
   characterBody: {fileID: 5220112393766223197}
   scoped: 0

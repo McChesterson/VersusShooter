@@ -9,6 +9,8 @@ public class MouseLook : MonoBehaviour
     public bool lockCursor = true;
     [Space]
     private Vector2 sensitivity = new Vector2(2, 2);
+    //added a way to change the look sensitivity
+    [SerializeField] private float sensitivityValue = 1f;
     [Space]
     public Vector2 smoothing = new Vector2(3, 3);
 
@@ -29,6 +31,8 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         instance = this;
+        //sets the sensitivity on start
+        sensitivity = new Vector2 (sensitivityValue, sensitivityValue);
 
         // Set target direction to the camera's initial orientation.
         targetDirection = transform.localRotation.eulerAngles;
