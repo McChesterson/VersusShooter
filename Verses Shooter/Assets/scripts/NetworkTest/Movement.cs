@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float walkSpeed = 4f;
-    public float sprintSpeed = 8f;
-    public float maxVelocityChange = 10f;
+    [SerializeField]
+    private float walkSpeed = 4f;
+    [SerializeField]
+    private float sprintSpeed = 8f;
+    [SerializeField]
+    private float maxVelocityChange = 10f;
     [Space]
-    public float airControl = 0.5f;
+    [SerializeField]
+    private float airControl = 0.5f;
 
     [Space]
-    public float jumpHeight = 5f;
+    [SerializeField]
+    private float jumpHeight = 5f;
 
     private Vector2 input;
+    private Vector2 velocity;
     private Rigidbody rb;
 
     private bool sprinting;
@@ -26,16 +32,6 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    
-    void Update()
-    {
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        input.Normalize();
-
-        sprinting = Input.GetButton("Sprint");
-        jumping = Input.GetButton("Jump");
-    }
-
     private void OnTriggerStay(Collider other)
     {
         grounded = true;
@@ -43,6 +39,12 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        input.Normalize();
+
+        sprinting = Input.GetButton("Sprint");
+        jumping = Input.GetButton("Jump");
+
         if (grounded)
         {
             if (jumping)
@@ -56,7 +58,7 @@ public class Movement : MonoBehaviour
             else
             {
                 var velocity1 = rb.velocity;
-                velocity1 = new Vector3(velocity1.x * 0.2f * Time.fixedDeltaTime, velocity1.y, (float)(velocity1.z * 0.2 * Time.fixedDeltaTime));
+                velocity1 = new Vector3(velocity1.x * 0.2f * Time.deltaTime, velocity1.y, (float)(velocity1.z * 0.2 * Time.deltaTime));
                 rb.velocity = velocity1;
             }
         }
@@ -64,17 +66,23 @@ public class Movement : MonoBehaviour
         {
             if (input.magnitude > 0.5)
             {
-                rb.AddForce(CalculateMovement(sprinting ? sprintSpeed * airControl : walkSpeed *airControl), ForceMode.VelocityChange);
+                rb.AddForce(CalculateMovement(sprinting ? sprintSpeed * airControl : walkSpeed * airControl), ForceMode.VelocityChange);
             }
             else
             {
                 var velocity1 = rb.velocity;
-                velocity1 = new Vector3(velocity1.x * 0.2f * Time.fixedDeltaTime, velocity1.y, (float)(velocity1.z * 0.2 * Time.fixedDeltaTime));
+                velocity1 = new Vector3(velocity1.x * 0.2f * Time.deltaTime, velocity1.y, (float)(velocity1.z * 0.2 * Time.deltaTime));
                 rb.velocity = velocity1;
             }
         }
-
         grounded = false;
+    }
+    void Update(){
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        input.Normalize();
+
+        sprinting = Input.GetButton("Sprint");
+        jumping = Input.GetButton("Jump");
     }
 
     Vector3 CalculateMovement(float _speed)
