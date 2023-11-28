@@ -21,16 +21,17 @@ public class Pistol : MonoBehaviour
         {
             nextFire -= Time.deltaTime;
         }
-        if (automatic ? Input.GetButton("fire1") : Input.GetButtonDown("fire1"))
-        {
-            nextFire = 1 / fireRate;
+        if (Input.GetKeyDown(KeyCode.Mouse0) && nextFire <= 0)
+            {
+                nextFire = 1 / fireRate;
 
-            Fire();
-        }
+                Fire();
+            }
     }
 
     void Fire()
     {
+        Debug.Log("Went bang bang!");
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         RaycastHit hit;
@@ -40,7 +41,7 @@ public class Pistol : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<Health>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
-
+                
             }
         }
     }

@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 9155505382257065875}
   - component: {fileID: 2476026809682804103}
   - component: {fileID: 1612452359133985456}
+  - component: {fileID: 842793888191776986}
   m_Layer: 6
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -414,6 +415,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   hpBar: {fileID: 4372823474166968429}
+--- !u!114 &842793888191776986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220112393766223197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2805bdf3c057fb4c9e3d131cfa94ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  fireRate: 2
+  range: 500
+  automatic: 0
+  cam: {fileID: 5220112395317741115}
 --- !u!1 &5220112395317741109
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +444,7 @@ GameObject:
   - component: {fileID: 5220112395317741115}
   - component: {fileID: 5220112395317741108}
   - component: {fileID: 5220112395317741113}
+  - component: {fileID: 6539545820807563223}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -499,7 +518,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5220112395317741109}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &5220112395317741113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,3 +537,20 @@ MonoBehaviour:
   smoothing: {x: 3, y: 3}
   characterBody: {fileID: 5220112393766223197}
   scoped: 0
+--- !u!114 &6539545820807563223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220112395317741109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2805bdf3c057fb4c9e3d131cfa94ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  fireRate: 2
+  range: 500
+  automatic: 0
+  cam: {fileID: 5220112395317741115}

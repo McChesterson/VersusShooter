@@ -21,7 +21,7 @@ public class GunParent : MonoBehaviour
         {
             nextFire -= Time.deltaTime;
         }
-        if (automatic ? Input.GetButton("fire1") : Input.GetButtonDown("fire1"))
+        if (automatic ? Input.GetButton("Fire1") : Input.GetButtonDown("Fire1"))
         {
             nextFire = 1 / fireRate;
 
