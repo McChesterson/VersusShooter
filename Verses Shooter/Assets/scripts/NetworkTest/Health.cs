@@ -23,5 +23,6 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         }
         Debug.Log("took " + damage + " damage : " + currentHealth);
+        Debug.Log("fillAmount: " + hpBar.fillAmount);
     }
 }
