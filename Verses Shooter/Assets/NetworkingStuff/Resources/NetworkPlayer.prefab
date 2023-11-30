@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 5220112393766223196}
-  camera: {fileID: 5220112395317741109}
+  cam: {fileID: 5220112395317741109}
 --- !u!135 &2476026809682804103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -451,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5220112395317741114
 Transform:
   m_ObjectHideFlags: 0
