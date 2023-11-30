@@ -30,12 +30,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedLobby();
 
-        /*
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = false;
         roomOptions.MaxPlayers = 4;
         PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("room", "lobby"), null, null);
-        */
 
         PhotonNetwork.JoinOrCreateRoom("test", null, null);
         Debug.Log("We're in the lobby");
