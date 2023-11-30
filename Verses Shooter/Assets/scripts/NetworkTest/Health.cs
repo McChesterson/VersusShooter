@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class Health : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Health : MonoBehaviour
 
     public Image hpBar;
 
+    [PunRPC]
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

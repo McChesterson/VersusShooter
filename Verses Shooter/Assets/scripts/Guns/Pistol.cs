@@ -41,7 +41,7 @@ public class Pistol : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<Health>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
-                
+                Debug.Log("hit something");
             }
         }
     }
