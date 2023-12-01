@@ -22,6 +22,6 @@ public class LobbyManager : MonoBehaviour
     public void JoinRoom()
     {
         PlayerPrefs.SetString("room", inputField.GetComponent<TMP_InputField>().text);
-        SceneManager.LoadScene(0); // If this isn't working check ID of main scene in  File > Build Settings
+        SceneManager.LoadScene(1); // If this isn't working check ID of main scene in  File > Build Settings  ("thanks" -Owen)
     }
 }
