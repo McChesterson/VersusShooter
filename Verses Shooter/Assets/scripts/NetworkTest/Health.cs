@@ -20,20 +20,21 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        
         //sets the fill amount on the player's health bar
         fillValue -= damage / (float)maxHealth;
         hpBar.fillAmount = fillValue;
 
         if (currentHealth <= 0)
         {
+            Destroy(gameObject);
             if (isLocalPlayer)
             {
                 RoomManager.instance.SpawnPlayer();
+                Debug.Log("Spawned in new Player");
             }
-
-            Destroy(gameObject);
+            
         }
         Debug.Log("took " + damage + " damage : " + currentHealth);
-        Debug.Log("fillAmount: " + fillValue);
     }
 }
