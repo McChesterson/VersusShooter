@@ -634,4 +634,4 @@ MonoBehaviour:
   range: 500
   automatic: 0
   cam: {fileID: 5220112395317741115}
-  _player: {fileID: 5220112393766223197}
+  _player: {fileID: 0}
