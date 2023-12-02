@@ -32,13 +32,11 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        grounded = true;
-    }
-
     private void FixedUpdate()
     {
+        RaycastHit hit;
+        grounded = false;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f, 0b111111)) grounded = true;
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input.Normalize();
 
@@ -75,7 +73,6 @@ public class Movement : MonoBehaviour
                 rb.velocity = velocity1;
             }
         }
-        grounded = false;
     }
     void Update(){
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
