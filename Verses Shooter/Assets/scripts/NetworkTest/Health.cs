@@ -27,12 +27,12 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
             if (isLocalPlayer)
             {
                 RoomManager.instance.SpawnPlayer();
                 Debug.Log("Spawned in new Player");
             }
+            Destroy(gameObject);
             
         }
         Debug.Log("took " + damage + " damage : " + currentHealth);

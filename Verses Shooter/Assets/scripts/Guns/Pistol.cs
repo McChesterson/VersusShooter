@@ -15,20 +15,27 @@ public class Pistol : MonoBehaviour
 
     private float nextFire;
 
+    bool canFire;
+
     void Update()
     {
         if (nextFire > 0)
         {
+            canFire = false;
             nextFire -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
+        else
+        {
+            canFire = true;
+        }
+
+        if (Input.GetButtonDown("Fire1") && canFire && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
         {
             Debug.Log("Went bang bang!");
             nextFire = 1 / fireRate;
 
             Fire();
         }
-        
     }
 
     void Fire()
