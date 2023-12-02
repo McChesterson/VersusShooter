@@ -465,6 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 5220112393766223196}
   cam: {fileID: 5220112395317741109}
+  localPlayer: 0
 --- !u!135 &2476026809682804103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -510,6 +511,7 @@ MonoBehaviour:
   range: 500
   automatic: 0
   cam: {fileID: 5220112395317741115}
+  _player: {fileID: 0}
 --- !u!1 &5220112395317741109
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,3 +634,4 @@ MonoBehaviour:
   range: 500
   automatic: 0
   cam: {fileID: 5220112395317741115}
+  _player: {fileID: 5220112393766223197}
