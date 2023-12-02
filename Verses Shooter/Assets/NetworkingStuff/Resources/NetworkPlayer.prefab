@@ -509,7 +509,6 @@ GameObject:
   - component: {fileID: 5220112395317741115}
   - component: {fileID: 5220112395317741108}
   - component: {fileID: 5220112395317741113}
-  - component: {fileID: 6539545820807563223}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -602,20 +601,3 @@ MonoBehaviour:
   smoothing: {x: 3, y: 3}
   characterBody: {fileID: 5220112393766223197}
   scoped: 0
---- !u!114 &6539545820807563223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5220112395317741109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2805bdf3c057fb4c9e3d131cfa94ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  fireRate: 2
-  range: 500
-  automatic: 0
-  cam: {fileID: 5220112395317741115}
