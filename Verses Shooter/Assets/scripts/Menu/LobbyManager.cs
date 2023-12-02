@@ -11,10 +11,8 @@ public class LobbyManager : MonoBehaviour
     private GameObject inputField;
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
         
@@ -22,6 +20,6 @@ public class LobbyManager : MonoBehaviour
     public void JoinRoom()
     {
         PlayerPrefs.SetString("room", inputField.GetComponent<TMP_InputField>().text);
-        SceneManager.LoadScene(1); // If this isn't working check ID of main scene in  File > Build Settings  ("thanks" -Owen)
+        SceneManager.LoadScene("NetworkTest2"); // If this isn't working check ID of main scene in  File > Build Settings
     }
 }
