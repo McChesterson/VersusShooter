@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     int currentHealth = 100;
     float fillValue = 1f;
 
+    public bool isLocalPlayer;
+
     public Image hpBar;
 
 
@@ -24,7 +26,10 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            RoomManager.instance.SpawnPlayer();
+            if (isLocalPlayer)
+            {
+                RoomManager.instance.SpawnPlayer();
+            }
 
             Destroy(gameObject);
         }
