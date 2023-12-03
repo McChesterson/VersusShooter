@@ -497,6 +497,7 @@ MonoBehaviour:
   range: 500
   automatic: 0
   cam: {fileID: 5220112395317741115}
+  hitVFX: {fileID: 4547065079737560826, guid: e680bd9d1bfef604fb89aa42c3bc5d85, type: 3}
 --- !u!1 &5220112395317741109
 GameObject:
   m_ObjectHideFlags: 0

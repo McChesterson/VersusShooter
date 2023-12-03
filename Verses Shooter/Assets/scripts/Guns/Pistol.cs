@@ -12,26 +12,21 @@ public class Pistol : MonoBehaviour
     public bool automatic;
     [Space]
     public Camera cam;
+    [Header("VFX")]
+    public GameObject hitVFX;
 
     private float nextFire;
-
-    bool canFire;
 
     void Update()
     {
         if (nextFire > 0)
         {
-            canFire = false;
             nextFire -= Time.deltaTime;
         }
-        else
-        {
-            canFire = true;
-        }
 
-        if (Input.GetButtonDown("Fire1") && canFire && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
+        if (Input.GetButtonDown("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
         {
-            Debug.Log("Went bang bang!");
+            //Debug.Log("Went bang bang!");
             nextFire = 1 / fireRate;
 
             Fire();
@@ -47,10 +42,15 @@ public class Pistol : MonoBehaviour
 
         if (Physics.Raycast(ray.origin, ray.direction, out hit, range))
         {
+            Debug.Log("hit point = " + hit.point);
+            //Instantiates the particle when a shot hits
+            PhotonNetwork.Instantiate(hitVFX.name, hit.point, Quaternion.identity);
+
+            //does damage if it hit a player
             if (hit.transform.gameObject.GetComponent<Health>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
-                Debug.Log("hit something");
+                Debug.Log("hit " + hit.transform.gameObject.GetComponent<PhotonView>().ViewID);
             }
         }
     }
