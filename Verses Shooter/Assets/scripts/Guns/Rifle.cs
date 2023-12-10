@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class Rifle : MonoBehaviour
 {
     public int damage;
     public float fireRate;
@@ -24,13 +24,28 @@ public class Pistol : MonoBehaviour
             nextFire -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
+        //checks if automatic is true, and lets the player hold down fire if true
+        if (automatic)
         {
-            //Debug.Log("Went bang bang!");
-            nextFire = 1 / fireRate;
+            if (Input.GetButton("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
+            {
+                Debug.Log("Going bang bang!");
+                nextFire = 1 / fireRate;
 
-            Fire();
+                Fire();
+            }
         }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
+            {
+                Debug.Log("Went bang bang!");
+                nextFire = 1 / fireRate;
+
+                Fire();
+            }
+        }
+
     }
 
     void Fire()

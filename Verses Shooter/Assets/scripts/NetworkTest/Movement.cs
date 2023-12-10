@@ -80,6 +80,19 @@ public class Movement : MonoBehaviour
 
         sprinting = Input.GetButton("Sprint");
         jumping = Input.GetButton("Jump");
+
+        //allow's the player to press escape to free their mouse
+        //clicking on the screen again will lock and hid the mouse again
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     Vector3 CalculateMovement(float _speed)

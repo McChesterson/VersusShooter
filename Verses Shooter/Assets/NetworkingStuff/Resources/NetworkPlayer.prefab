@@ -274,6 +274,8 @@ GameObject:
   - component: {fileID: 9155505382257065875}
   - component: {fileID: 1612452359133985456}
   - component: {fileID: 842793888191776986}
+  - component: {fileID: 6560330144550853651}
+  - component: {fileID: 871485981955735415}
   m_Layer: 6
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -487,7 +489,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5220112393766223197}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2805bdf3c057fb4c9e3d131cfa94ade, type: 3}
   m_Name: 
@@ -498,6 +500,41 @@ MonoBehaviour:
   automatic: 0
   cam: {fileID: 5220112395317741115}
   hitVFX: {fileID: 4547065079737560826, guid: e680bd9d1bfef604fb89aa42c3bc5d85, type: 3}
+--- !u!114 &6560330144550853651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220112393766223197}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80d377f3f034e448b9af429daf22866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  fireRate: 10
+  range: 500
+  automatic: 1
+  cam: {fileID: 5220112395317741115}
+  hitVFX: {fileID: 4547065079737560826, guid: e680bd9d1bfef604fb89aa42c3bc5d85, type: 3}
+--- !u!114 &871485981955735415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220112393766223197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95049580944502499083d0e9cf5b5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 842793888191776986}
+  - {fileID: 6560330144550853651}
+  activeWeaponIndex: 0
+  activeWeapon: {fileID: 0}
 --- !u!1 &5220112395317741109
 GameObject:
   m_ObjectHideFlags: 0

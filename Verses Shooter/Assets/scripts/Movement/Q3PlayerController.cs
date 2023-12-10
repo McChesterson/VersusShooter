@@ -32,7 +32,7 @@ namespace Q3Movement
         [SerializeField] private float m_Friction = 6;
         [SerializeField] private float m_Gravity = 20;
         [SerializeField] private float m_JumpForce = 8;
-        [SerializeField] private float m_CrouchSpeed = 0.5f;
+        //[SerializeField] private float m_CrouchSpeed = 0.5f;
         [Tooltip("Automatically jump when holding jump button")]
         [SerializeField] private bool m_AutoBunnyHop = false;
         [Tooltip("How precise air control is")]
