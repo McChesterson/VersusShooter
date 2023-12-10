@@ -15,6 +15,7 @@ public class GunController : MonoBehaviour
     {
         pistol = GetComponent<Pistol>();
         rifle = GetComponent<Rifle>();
+        activeWeapon = pistol;
     }
 
     void Update()
@@ -29,12 +30,8 @@ public class GunController : MonoBehaviour
             activeWeaponIndex = 1;
             Debug.Log("active wepon changed to " + activeWeaponIndex);
         }
-
-        
-
+        activeWeapon.enabled = false;
         activeWeapon = guns[activeWeaponIndex];
-
         activeWeapon.enabled = true;
-
     }
 }

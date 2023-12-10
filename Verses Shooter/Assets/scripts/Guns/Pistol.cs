@@ -26,7 +26,7 @@ public class Pistol : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && nextFire <= 0 && gameObject.GetComponentInParent<PlayerSetup>().localPlayer)
         {
-            //Debug.Log("Went bang bang!");
+            Debug.Log("Went bang bang!");
             nextFire = 1 / fireRate;
 
             Fire();
