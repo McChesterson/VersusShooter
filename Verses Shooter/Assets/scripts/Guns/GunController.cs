@@ -23,15 +23,24 @@ public class GunController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             activeWeaponIndex = 0;
+            guns[0].enabled = true;
+            guns[1].enabled = false;
             Debug.Log("active wepon changed to " + activeWeaponIndex);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             activeWeaponIndex = 1;
+            guns[0].enabled = false;
+            guns[1].enabled = true;
             Debug.Log("active wepon changed to " + activeWeaponIndex);
         }
-        activeWeapon.enabled = false;
+
         activeWeapon = guns[activeWeaponIndex];
-        activeWeapon.enabled = true;
+
+        /*
+        activeWeapon.enabled = false;
+         activeWeapon.enabled = true;
+        */
+        
     }
 }
